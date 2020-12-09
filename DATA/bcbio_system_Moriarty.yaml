@@ -1,0 +1,113 @@
+---
+# Configuration file specifying system details for running an analysis pipeline
+# These pipeline apply generally across multiple projects. Adjust them in sample
+# specific configuration files when needed.
+
+# -- Base setup
+
+# Define resources to be used for individual programs on multicore machines.
+# These can be defined specifically for memory and processor availability.
+# - memory: Specify usage for memory intensive programs. The indicated value specifies the wanted *per core* usage.
+# - cores: Define cores that can be used for multicore programs.
+# - jvm_opts: specify details
+# - cmd: Command to launch the program, if not located on PATH.
+# - dir: Directory containing program associated data. Especially useful for
+#        java jars
+resources:
+  # default options, used if other items below are not present
+  # avoids needing to configure/adjust for every program
+  default:
+    memory: 7G
+    cores: 16
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+  log:
+    dir: /sw/pipelines/bcbio/0.8.9/share/java/log
+  tmp:
+    dir: null
+  ucsc_bigwig:
+    memory: 7g
+  bwa:
+    cmd: bwa
+    memory: 7g
+    cores: 16
+  samtools:
+    memory: 7G
+    cores: 16
+  star:
+    memory: 7g
+    cores: 16
+  snap:
+    memory: 7G
+    cores: 16
+  kraken:
+    memory: 7G
+    cores: 16
+  qsignature:
+    memory: 7G
+    cores: 16
+  qualimap:
+    memory: 7g
+    cores: 16
+  fgbio:
+    options: [--min-reads, 1]
+  qsnp:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+  gatk:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+    dir: /sw/pipelines/bcbio/0.8.9/share/java/gatk
+  gatk-haplotype:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+  gatk-vqsr:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+  picard:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+    dir: /sw/pipelines/bcbio/0.8.9/share/java/picard
+  snpeff:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+  bcbio_variation:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+    dir: /sw/pipelines/bcbio/0.8.9/share/java/bcbio_variation
+  rnaseqc:
+    dir: /sw/pipelines/bcbio/0.8.9/share/java/RNA-SeQC
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+  mutect:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+    dir: /sw/pipelines/bcbio/0.8.9/share/java/mutect
+  varscan:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+    dir: /sw/pipelines/bcbio/0.8.9/share/java/varscan
+  vardict:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+  oncofuse:
+    jvm_opts: ["-Xms1000m", "-Xmx7000m"]
+    dir: /sw/pipelines/bcbio/0.8.9/share/java/oncofuse
+  express:
+    memory: 7g
+  dexseq:
+    memory: 7g
+  macs2:
+    memory: 7g
+  seqcluster:
+    memory: 7g
+
+# Location of galaxy configuration file, which has pointers to reference data
+# https://bcbio-nextgen.readthedocs.org/en/latest/contents/configuration.html#reference-genome-files
+galaxy_config: universe_wsgi.ini
+
+# -- Additional options for specific integration, not required for standalone usage.
+
+# Galaxy integration. Required for retrieving information from Galaxy LIMS.
+#galaxy_url: http://your/galaxy/url
+#galaxy_api_key: your_galaxy_api_key
+
+# Details for hooking automated processing to a sequencer machine.
+# Not required if running standalone pipelines.
+# analysis:
+#   # Can specify a different remote host to initiate
+#   # the copy from. This is useful for NFS shared filesystems
+#   # where you want to manage the copy from the base machine.
+#   copy_user:
+#   copy_host:
+#   store_dir: /store4/solexadata
+#   base_dir: /array0/projects/Sequencing
+#   worker_program: nextgen_analysis_server.py

@@ -1,0 +1,47 @@
+reference:
+    ref: "/data/ref_genomes/hg19/bwa/BWA_0.7.10_refseq/hg19.with.mt.fasta"
+    STAR: "/projects/wp4/nobackup/workspace/jonas_test/STAR-Fusion/references/GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa.star.idx/"
+    STAR_fusion: "/projects/wp4/nobackup/workspace/jonas_test/STAR-Fusion/references/GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play/ctat_genome_lib_build_dir/"
+    Arriba_index: "/projects/wp4/nobackup/workspace/jonas_test/Arriba/references/STAR_index_hs37d5_GENCODE19/"
+    Arriba_ref: "/projects/wp4/nobackup/workspace/jonas_test/Arriba/references/hs37d5.fa"
+    Arriba_gtf: "/projects/wp4/nobackup/workspace/jonas_test/Arriba/references/GENCODE19.gtf"
+    Arriba_blacklist: "/projects/wp4/nobackup/workspace/jonas_test/Arriba/references/blacklist_hg19_hs37d5_GRCh37_2018-11-04.tsv"
+    Arriba_refdir: "/projects/wp4/nobackup/workspace/jonas_test/Arriba/references"
+
+configfiles:
+    multiqc: "DATA/multiqc_config.yaml"
+
+bed:
+    bedfile: "DATA/TST500C_manifest.bed"
+    intervals: "DATA/TST500C_manifest.interval_list"
+
+singularity:
+    execute: "singularity exec -B /data -B /projects -B /scratch "
+    multiqc: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/multiqc-1.9.simg"
+    samtools: "/projects/wp2/nobackup/Twist_Myeloid/Containers/bwa0.7.17-samtools-1.9.simg"
+    picard: "/projects/wp2/nobackup/Twist_Myeloid/Containers/bwa0.7.17-samtools-1.9.simg"
+    bwa: "/projects/wp2/nobackup/Twist_Myeloid/Containers/bwa0.7.17-samtools-1.9.simg"
+    umis: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/umis_1.0.7.simg"
+    bamsormadup: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/biobambam2.0.50_bedtofastq.simg"
+    bamtofastq: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/biobambam2.0.50_bedtofastq.simg"
+    cartool: "/projects/wp2/nobackup/Twist_Myeloid/Containers/CARTools-200206.simg"
+    fastqc: "/projects/wp2/nobackup/Twist_Myeloid/Containers/fastqc0.11.8.simg"
+    #fgbio: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/bedtools2.29.2_samtools1.9.0_fgbio1.3.0.simg" #fgbio-0.2.1b-py27_0
+    fgbio: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/fgbio_0.2.1b-0.simg"
+    python: "/projects/wp2/nobackup/Twist_Myeloid/Containers/python3.6.0-pysam-xlsxwriter.simg"
+    bcftools: "/projects/wp2/nobackup/Twist_Myeloid/Containers/bcftools-1.9--8.simg"
+    #freebayes: "/projects/wp2/nobackup/Twist_Myeloid/Containers/freebayes-1.3.1-0.simg"
+    freebayes: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/freebayes_1.1.simg"
+    #mutect2: "/projects/wp2/nobackup/Twist_Myeloid/Containers/gatk4-4.1.7.0--py38_0.simg"
+    mutect2_gatk3: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/GATK3.8.0.simg"
+    gatk3: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/GATK3.8.0.simg"
+    vt: "/projects/wp2/nobackup/Twist_Myeloid/Containers/vt-0.57721-2.simg"
+    ensemble: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/bcbio-variation-recall-0.2.6-0_bcftools-1.9.simg"
+    vardict: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/vardict_java_1.5.1.simg"
+    #varscan: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/varscan_2.4.2.simg"
+    varscan: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/varscan_2.4.3-0.simg"
+    STAR_fusion: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/star-fusion.v1.7.0.simg"
+    Arriba: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/Arriba.simg"
+
+cartool:
+    cov: "100 200 1000"
