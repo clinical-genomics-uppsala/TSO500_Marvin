@@ -58,10 +58,10 @@ for line in refseq :
                         break
                     exon_nr += 1
 
-outfile = open(sys.argv[2], "w")
+outfile = open(sys.argv[3], "w")
 outfile.write(header_line)
 for fusion_info in gene_list :
-    print(fusion_info)
+    #print(fusion_info)
     fusion = fusion_info[0][0] + "_" + fusion_info[5] + "_exon" + fusion_info[3] + ":" + fusion_info[1][0] + "_" + fusion_info[6] + "_exon" + fusion_info[4]
     outfile.write(fusion + "\t" + fusion_info[2])
 outfile.close()

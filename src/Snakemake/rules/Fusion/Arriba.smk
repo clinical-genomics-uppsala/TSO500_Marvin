@@ -62,16 +62,19 @@ rule Arriba_HC:
         fusions = "Arriba_results/{sample}.fusions.tsv",
         refseq = "DATA/refseq_full_hg19.txt"
     output:
-        fusions = "Results/RNA/{sample}/Fusions/{sample}.Arriba.HighConfidence.fusions.tsv"
+        #fusions = "Results/RNA/{sample}/Fusions/{sample}.Arriba.HighConfidence.fusions.tsv"
+        fusions = "Results/RNA/{sample}/Fusions/{sample}.Arriba.fusions.tsv"
     shell:
-        "head -n 1 {input.fusions} > {output.fusions} && "
-        "grep 'high' {input.fusions} >> {output.fusions} || true && "
-        "python src/Add_fusion_exon_name.py {input.refseq} {output.fusions}"
+        #"head -n 1 {input.fusions} > {output.fusions} && "
+        #"grep 'high' {input.fusions} >> {output.fusions} || true && "
+        #"python src/Add_fusion_exon_name.py {input.refseq} {output.fusions}"
+        "python src/Add_fusion_exon_name.py {input.refseq} {input.fusions} {output.fusions}"
 
 
 rule Arriba_image:
     input:
-        fusion = "Results/RNA/{sample}/Fusions/{sample}.Arriba.HighConfidence.fusions.tsv",
+        #fusion = "Results/RNA/{sample}/Fusions/{sample}.Arriba.HighConfidence.fusions.tsv",
+        fusion = "Results/RNA/{sample}/Fusions/{sample}.Arriba.fusions.tsv",
         bam = "STAR/{sample}Aligned.sortedByCoord.out.bam",
         bai = "STAR/{sample}Aligned.sortedByCoord.out.bam.bai"
     output:
