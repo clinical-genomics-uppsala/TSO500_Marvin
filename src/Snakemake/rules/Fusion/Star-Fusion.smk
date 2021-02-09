@@ -6,7 +6,7 @@ rule STAR:
         fq1 = "fastq/RNA/{sample}_R1.fastq.gz",
         fq2 = "fastq/RNA/{sample}_R2.fastq.gz"
     output:
-        alignment = "STAR2/{sample}Chimeric.out.junction"
+        alignment = "RNA_bam/{sample}Chimeric.out.junction"
     threads: 5
     run:
         import subprocess
@@ -60,7 +60,7 @@ rule STAR:
 
 rule STAR_Fusion:
     input:
-        alignment = "STAR2/{sample}Chimeric.out.junction",
+        alignment = "RNA_bam/{sample}Chimeric.out.junction",
         fq1 = "fastq/RNA/{sample}_R1.fastq.gz",
         fq2 = "fastq/RNA/{sample}_R2.fastq.gz"
     output:
