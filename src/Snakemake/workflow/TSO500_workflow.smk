@@ -35,7 +35,8 @@ if config["RNA_Samples"] != "No RNA" :
     include: "../rules/Adapter_trimming/Adapter_trimming.smk"
     include: "../rules/Fusion/Arriba.smk"
     include: "../rules/Fusion/Imbalance.smk"
-    include: "../rules/Fusion/exon_splicing.smk"
+    #include: "../rules/Fusion/exon_splicing.smk"
+    include: "../rules/Fusion/Exon_skipping.smk"
     include: "../rules/Fusion/Star-Fusion.smk"
     include: "../rules/VCF_fix/Collect_results_RNA.smk" #Change folder!
     include: "../rules/QC/RSeQC.smk"

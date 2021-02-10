@@ -84,7 +84,8 @@ def get_input():
         input_list.append("Results/RNA/Imbalance/imbalance_called_gene.txt")
 
         '''Exon skipping'''
-        input_list.append("Results/RNA/Exon_skipping/exon_skipping.txt")
+        #input_list.append("Results/RNA/Exon_skipping/exon_skipping.txt")
+        input_list.append(["Results/RNA/" + s + "/Fusions/" + s + "_Met_exon_skipping.txt" for s in config["RNA_Samples"]])
 
         '''QC'''
         input_list.append(["Results/RNA/" + s + "/Housekeeping_gene_coverage.txt" for s in config["RNA_Samples"]])
