@@ -54,7 +54,9 @@ rule fix_fastq_bash_DNA:
 
 rule fix_fastq_run_DNA_R1:
     input:
-        bash_scripts_DNA_R1 = "fastq_temp/DNA/{sample}_R1.fix_fastq.sh"
+        bash_scripts_DNA_R1 = "fastq_temp/DNA/{sample}_R1.fix_fastq.sh",
+        fastq1 = fastq1_files,
+        fastq2 = fastq2_files,
     output:
         merged_fastq_R1_DNA = "fastq/DNA/{sample}_R1.fastq.gz"
     shell:
@@ -62,7 +64,9 @@ rule fix_fastq_run_DNA_R1:
 
 rule fix_fastq_run_DNA_R2:
     input:
-        bash_scripts_DNA_R2 = "fastq_temp/DNA/{sample}_R2.fix_fastq.sh"
+        bash_scripts_DNA_R2 = "fastq_temp/DNA/{sample}_R2.fix_fastq.sh",
+        fastq1 = fastq1_files,
+        fastq2 = fastq2_files,
     output:
         merged_fastq_R2_DNA = "fastq/DNA/{sample}_R2.fastq.gz"
     shell:
