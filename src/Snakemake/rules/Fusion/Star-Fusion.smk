@@ -35,7 +35,7 @@ rule STAR:
         command += "--peOverlapNbasesMin 12 "
         command += "--peOverlapMMp 0.1 "
         command += "--runThreadN " + str(threads) + " "
-        command += "--outFileNamePrefix STAR2/" + wildcards.sample
+        command += "--outFileNamePrefix RNA_bam/" + wildcards.sample
         print(command)
         subprocess.call(command, shell=True)
 
