@@ -16,12 +16,12 @@ for line in bed_file :
     key2 = chrom + "_" + str(end_pos)
     region = lline[3]
     gene = region.split("_")[0]
-    exon = region.split("_exon_")[1]
-    if exon == "UTR" :
-        exon = 0
-    exon = int(exon)
     if gene != "MET" :
         continue
+    if region.find("Exon") == -1 :
+        continue
+    exon = region.split("_Exon")[1].split("_")[0]
+    exon = int(exon)
     if gene not in gene_dict :
         gene_dict[gene] = []
     gene_dict[gene].append([chrom, start_pos, end_pos, exon])
