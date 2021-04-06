@@ -1,4 +1,3 @@
-
 S_rna = []
 for s in config["RNA_Samples"].values() :
     S_rna.append(s)
@@ -17,7 +16,7 @@ rule fix_fastq_bash_RNA:
         RNA_samples = [s for s in config["RNA_Samples"]]
     run:
         import subprocess
-        subprocess.call("mkdir fastq",shell=True)
+        #subprocess.call("mkdir fastq",shell=True)
         i = 0
         for sample in params.RNA_samples :
             bs = open("fastq_temp/RNA/" + sample + "_R1.fix_fastq.sh", "w")

@@ -2,7 +2,7 @@ S_dna = []
 for s in config["DNA_Samples"].values() :
     S_dna.append(s)
 fastq1_files = ["fastq_temp/DNA/" + s + "_" + i + "_R1_001.fastq.gz" for s,i in zip(config["DNA_Samples"], S_dna)]
-fastq2_files =  ["fastq_temp/DNA/" + s + "_" + i + "_R2_001.fastq.gz" for s,i in zip(config["DNA_Samples"], S_dna)]
+fastq2_files = ["fastq_temp/DNA/" + s + "_" + i + "_R2_001.fastq.gz" for s,i in zip(config["DNA_Samples"], S_dna)]
 
 
 rule fix_fastq_bash_DNA:
@@ -16,7 +16,7 @@ rule fix_fastq_bash_DNA:
         DNA_samples = [s for s in config["DNA_Samples"]]
     run:
         import subprocess
-        subprocess.call("mkdir fastq",shell=True)
+        #subprocess.call("mkdir fastq",shell=True)
         i = 0
         for sample in params.DNA_samples :
             bs = open("fastq_temp/DNA/" + sample + "_R1.fix_fastq.sh", "w")
@@ -29,7 +29,6 @@ rule fix_fastq_bash_DNA:
             bs.write("\t\t\techo \"zcat fastq_temp/DNA/\"$sample\"_\"$sample_number\"_\"$r\"* | awk '{if(/^@/){split(\$0,a,\\\":\\\");print(a[1]\\\":\\\"a[2]\\\":\\\"a[3]\\\":\\\"a[4]\\\":\\\"a[5]\\\":\\\"a[6]\\\":\\\"a[7]\\\":UMI_\\\"gsub(\\\"+\\\",\\\"\\\",a[8])\\\":\\\"a[9]\\\":\\\"a[10]\\\":\\\"a[11])}else{print(\$0)}}' | gzip > fastq/DNA/\"$sample\"_\"$r\".fastq.gz \";\n")
             bs.write("\t\tdone  | bash -\n")
             bs.write("done\n")
-            #bs.write("sleep 7100\n")
             bs.close()
             subprocess.call("chmod 774 fastq_temp/DNA/" + sample + "_R1.fix_fastq.sh", shell=True)
             i += 1
@@ -45,7 +44,6 @@ rule fix_fastq_bash_DNA:
             bs.write("\t\t\techo \"zcat fastq_temp/DNA/\"$sample\"_\"$sample_number\"_\"$r\"* | awk '{if(/^@/){split(\$0,a,\\\":\\\");print(a[1]\\\":\\\"a[2]\\\":\\\"a[3]\\\":\\\"a[4]\\\":\\\"a[5]\\\":\\\"a[6]\\\":\\\"a[7]\\\":UMI_\\\"gsub(\\\"+\\\",\\\"\\\",a[8])\\\":\\\"a[9]\\\":\\\"a[10]\\\":\\\"a[11])}else{print(\$0)}}' | gzip > fastq/DNA/\"$sample\"_\"$r\".fastq.gz \";\n")
             bs.write("\t\tdone  | bash -\n")
             bs.write("done\n")
-            #bs.write("sleep 7100\n")
             bs.close()
             subprocess.call("chmod 774 fastq_temp/DNA/" + sample + "_R2.fix_fastq.sh", shell=True)
             i += 1

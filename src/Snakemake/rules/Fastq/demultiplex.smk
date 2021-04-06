@@ -19,8 +19,8 @@ if config["RNA_Samples"] != "No RNA" :
 
 rule demultiplex:
     output:
-        fastq1 = temp(fastq1_files),
-        fastq2 = temp(fastq2_files),
+        fastq1 = fastq1_files,
+        fastq2 = fastq2_files,
     params:
         runfolder = config["Runfolder"],
         sample_sheet = config["Sample_sheet"]
