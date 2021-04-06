@@ -29,7 +29,7 @@ rule Create_TSO500_yaml:
         RNA_sample_list = []
         #KG_runname = os.getcwd().split("/")[-1]
         i = 1
-        sample_sheet_name = glob.glob("*heet.csv")
+        sample_sheet_name = glob.glob("*_samplesheet.csv")
         if len(sample_sheet_name) > 1 :
             print("Error: Something wrong with the sample sheet name!")
             quit()
