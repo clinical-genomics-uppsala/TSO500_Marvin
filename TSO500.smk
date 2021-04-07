@@ -30,6 +30,7 @@ def get_input():
         '''Variant filtering'''
         input_list.append(["Results/DNA/" + s + "/vcf/" + s + "-ensemble.final.no.introns.vcf.gz" for s in config["DNA_Samples"]])
         input_list.append(["Results/DNA/" + s + "/vcf/" + s + "-ensemble.final.no.introns.AD20.vcf.gz" for s in config["DNA_Samples"]])
+        input_list.append(["Results/DNA/" + s + "/vcf/" + s + "-ensemble.final.no.introns.AD20.multiplebp.vcf" for s in config["DNA_Samples"]])
         input_list.append(["Results/DNA/" + s + "/vcf/" + s + "-ensemble.final.no.introns.AD20.ffpe.tsv.gz" for s in config["DNA_Samples"]])
 
         '''CNV'''

@@ -1,7 +1,4 @@
 
-localrules: copy_biomarker, copy_CNV
-
-
 rule ensemble_filter:
     input:
         vcf = "recall/{sample}.ensemble.vcf.gz"
@@ -28,10 +25,33 @@ rule AD_filter:
         vcf = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.vcf.gz"
     output:
         vcf = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vcf"
-    singularity:
-        "/projects/wp2/nobackup/Twist_Myeloid/Containers/bcftools-1.9--8.simg"
+    container:
+        config["singularity"]["bcftools"]
     shell :
         "bcftools filter -O v -o {output.vcf} -e \"FORMAT/AD<20\" {input.vcf}"
+
+
+rule Find_multibp_SNV:
+    input:
+        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vcf",
+        ref=config["reference"]["ref"],
+    output:
+        vcf=temp("Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.multiplebp.vcf.temp"),
+    #singularity:
+    #    config["singularity"].get("python_samtools", config["singularity"].get("default", ""))
+    script:
+        "../../../Multibp_SNV.py"
+
+
+rule sort_multiplebp_vcf:
+    input:
+        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.multiplebp.vcf.temp",
+    output:
+        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.multiplebp.vcf",
+    container:
+        config["singularity"]["bcftools"]
+    wrapper:
+        "0.72.0/bio/bcftools/sort"
 
 
 rule ffpe_filter:
