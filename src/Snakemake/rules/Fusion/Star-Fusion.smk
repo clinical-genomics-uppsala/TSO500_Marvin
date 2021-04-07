@@ -6,7 +6,8 @@ rule STAR:
         fq1 = "fastq/RNA/{sample}_R1.fastq.gz",
         fq2 = "fastq/RNA/{sample}_R2.fastq.gz"
     output:
-        alignment = "RNA_bam/{sample}Chimeric.out.junction"
+        alignment = "RNA_bam/{sample}Chimeric.out.junction",
+        bam = "RNA_bam/{sample}Aligned.sortedByCoord.out.bam.bai",
     threads: 5
     run:
         import subprocess
@@ -38,6 +39,7 @@ rule STAR:
         command += "--outFileNamePrefix RNA_bam/" + wildcards.sample
         print(command)
         subprocess.call(command, shell=True)
+        subprocess.call("samtools index " + output.bam, shell=True)
 
 # rule STAR_Fusion:
 #     input:
