@@ -7,7 +7,8 @@ rule STAR:
         fq2 = "fastq/RNA/{sample}_R2.fastq.gz"
     output:
         alignment = "RNA_bam/{sample}Chimeric.out.junction",
-        bam = "RNA_bam/{sample}Aligned.sortedByCoord.out.bam.bai",
+        bam = "RNA_bam/{sample}Aligned.sortedByCoord.out.bam",
+        bai = "RNA_bam/{sample}Aligned.sortedByCoord.out.bam.bai",
     threads: 5
     run:
         import subprocess
