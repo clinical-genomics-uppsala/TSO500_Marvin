@@ -31,12 +31,31 @@ rule AD_filter:
         "bcftools filter -O v -o {output.vcf} -e \"FORMAT/AD<20\" {input.vcf}"
 
 
-rule Find_multibp_SNV:
+rule vep:
     input:
         vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vcf",
+        cache=config["configfiles"]["vep"],
+        fasta=config["reference"]["ref"],
+    output:
+        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vep.vcf,
+    params:
+        # "--everything --check_existing --pick"  #--exclude_null_alleles
+        "--check_existing --pick --sift b --polyphen b --ccds --uniprot --hgvs --symbol --numbers --domains --regulatory --canonical --protein --biotype --uniprot --tsl --appris --gene_phenotype --af --af_1kg --af_gnomad --max_af --pubmed --variant_class ",
+    log:
+        "logs/variantCalling/vep/{sample}.log",
+    singularity:
+        config["singularity"]["vep"]
+    threads: 10
+    shell:
+        "(vep --vcf --no_stats -o {output.vcf} -i {input.vcf} --dir_cache {input.cache} --fork {threads} --cache --refseq --offline --fasta {input.fasta} {params} ) &> {log}"
+
+
+rule Find_multibp_SNV:
+    input:
+        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vep.vcf",
         ref=config["reference"]["ref"],
     output:
-        vcf=temp("Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.multiplebp.vcf.temp"),
+        vcf=temp("Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vep.multiplebp.vcf.temp"),
     #singularity:
     #    config["singularity"].get("python_samtools", config["singularity"].get("default", ""))
     script:
@@ -45,9 +64,9 @@ rule Find_multibp_SNV:
 
 rule sort_multiplebp_vcf:
     input:
-        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.multiplebp.vcf.temp",
+        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vep.multiplebp.vcf.temp",
     output:
-        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.multiplebp.vcf",
+        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vep.multiplebp.vcf",
     container:
         config["singularity"]["bcftools"]
     wrapper:

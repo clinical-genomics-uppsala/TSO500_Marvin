@@ -10,6 +10,7 @@ reference:
 
 configfiles:
     multiqc: "DATA/multiqc_config.yaml"
+    vep: "/data/ref_genomes/VEP/"
 
 bed:
     bedfile: "DATA/TST500C_manifest.bed"
@@ -42,6 +43,7 @@ singularity:
     varscan: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/varscan_2.4.3-0.simg"
     STAR_fusion: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/star-fusion.v1.7.0.simg"
     Arriba: "/projects/wp4/nobackup/workspace/somatic_dev/singularity/Arriba.simg"
+    vep: "/projects/wp2/nobackup/Twist_Myeloid/Containers/ensembl-vep-99.0.simg"
 
 cartool:
     cov: "100 200 1000"
