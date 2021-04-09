@@ -65,12 +65,13 @@ rule STAR_Fusion:
     input:
         alignment = "RNA_bam/{sample}Chimeric.out.junction",
         fq1 = "fastq/RNA/{sample}_R1.fastq.gz",
-        fq2 = "fastq/RNA/{sample}_R2.fastq.gz"
+        fq2 = "fastq/RNA/{sample}_R2.fastq.gz",
     output:
         fusion = "STAR_fusion/{sample}/Fusions/star-fusion.fusion_predictions.abridged.coding_effect.tsv",
-        html = "STAR_fusion/{sample}/Fusions/FusionInspector-inspect/finspector.fusion_inspector_web.html"
+        html = "STAR_fusion/{sample}/Fusions/FusionInspector-inspect/finspector.fusion_inspector_web.html",
     params:
-        ref = config["reference"]["STAR_fusion"]
+        ref = config["reference"]["STAR_fusion"],
+        out_FI_dir = "STAR_fusion/{sample}/Fusions/FusionInspector-inspect/",
     singularity:
         config["singularity"]["STAR_fusion"]
     threads: 5
@@ -85,6 +86,8 @@ rule STAR_Fusion:
         "--right_fq {input.fq2} "
         "--examine_coding_effect "
         "--FusionInspector inspect"
+        " && mkdir -p {out_FI_dir}"
+        " && touch {output.html}"
 
 # rule Star_fusion_validate:
 #     input:
