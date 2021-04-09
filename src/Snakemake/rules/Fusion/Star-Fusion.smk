@@ -86,7 +86,7 @@ rule STAR_Fusion:
         "--right_fq {input.fq2} "
         "--examine_coding_effect "
         "--FusionInspector inspect"
-        " && mkdir -p {out_FI_dir}"
+        " && mkdir -p {params.out_FI_dir}"
         " && touch {output.html}"
 
 # rule Star_fusion_validate:
