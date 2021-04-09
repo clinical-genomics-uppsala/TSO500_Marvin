@@ -37,7 +37,7 @@ rule vep:
         cache=config["configfiles"]["vep"],
         fasta=config["reference"]["ref"],
     output:
-        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vep.vcf,
+        vcf="Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vep.vcf",
     params:
         # "--everything --check_existing --pick"  #--exclude_null_alleles
         "--check_existing --pick --sift b --polyphen b --ccds --uniprot --hgvs --symbol --numbers --domains --regulatory --canonical --protein --biotype --uniprot --tsl --appris --gene_phenotype --af --af_1kg --af_gnomad --max_af --pubmed --variant_class ",
