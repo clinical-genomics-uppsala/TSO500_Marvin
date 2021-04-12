@@ -68,6 +68,9 @@ prev_pos = 0
 prev_candidate = []
 Multibp_list = []
 for candidate in candidate_list:
+    # Skip if not coding
+    if len(candidate[7].split("c.")) == 1 :
+        continue
     gene_change = candidate[7].split("c.")[1].split("|")[0]
     if gene_change[:-3].find("-") != -1 or gene_change[:-3].find("+") != -1 or gene_change[:-3].find("*") != -1:
         continue
