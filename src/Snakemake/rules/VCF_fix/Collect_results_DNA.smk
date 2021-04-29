@@ -82,7 +82,7 @@ rule ffpe_filter:
         vcf_ffpe_temp = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.ffpe.temp.vcf",
         vcf_ffpe = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.ffpe.tsv"
     output:
-        gvcf = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vcf.gz",
+        #gvcf = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vcf.gz",
         gvcf_ffpe = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.ffpe.tsv.gz"
     shell:
         #"module load oracle-jdk-1.8/1.8.0_162 && "
