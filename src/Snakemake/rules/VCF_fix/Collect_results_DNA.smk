@@ -90,9 +90,9 @@ rule ffpe_filter:
         "python src/Add_FFPE_column_to_vcf.py {params.vcf_ffpe_temp} {params.vcf_ffpe} && "
         "rm {params.vcf_ffpe_temp} && "
         "bgzip {params.vcf_ffpe} && "
-        "tabix {output.gvcf_ffpe} && "
-        "bgzip {input.vcf} && "
-        "tabix {output.gvcf}"
+        "tabix {output.gvcf_ffpe}"
+        #"bgzip {input.vcf} && "
+        #"tabix {output.gvcf}"
 
 
 rule copy_mv_TS0500:
