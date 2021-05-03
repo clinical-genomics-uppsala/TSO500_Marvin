@@ -154,6 +154,9 @@ for Multibp in Multibp_list:
                 AA_ref[i] = ref_bp
                 AA_alt[i] = ref_bp
         i += 1
+    if flip_bp:
+        ref = ref[2] + ref[1] + ref[0]
+        alt = alt[2] + alt[1] + alt[0]
     ref_AA = "".join(AA_ref)
     alt_AA = "".join(AA_alt)
     for AA in AA_dict:
