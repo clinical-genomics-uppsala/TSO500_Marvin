@@ -78,7 +78,7 @@ for candidate in candidate_list:
     aa_nr = math.ceil(gene_pos / 3.0)
     chrom = candidate[0]
     pos = int(candidate[1])
-    if chrom == prev_chrom and pos - prev_pos <= 2 and aa_nr == prev_aa_nr:
+    if chrom == prev_chrom and pos - prev_pos <= 2 and pos - prev_pos > 0 and aa_nr == prev_aa_nr:
         if Multibp_list != [] and Multibp_list[-1][1][0] == prev_chrom and int(Multibp_list[-1][1][1]) == prev_pos:
             Multibp_list[-1].append(candidate)
         else:
@@ -100,7 +100,7 @@ for Multibp in Multibp_list:
         codon_pos = (gene_pos - 1) % 3
         codon_pos_list.append(codon_pos)
     flip_bp = False
-    if codon_pos_list[0] > codon_pos_list[1]:
+    if codon_pos_list[0] > codon_pos_list[-1]:
         flip_bp = True
 
     ref = ["X", "X", "X"]
