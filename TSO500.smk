@@ -41,8 +41,8 @@ def get_input():
         input_list.append(["Results/DNA/" + s + "/CNV/" + s + "-ready.png" for s in config["DNA_Samples"]])
 
         '''QC'''
-        input_list.append(["Results/DNA/" + s + "/QC/Low_coverage_positions.txt" for s in config["DNA_Samples"]])
-        input_list.append(["Results/DNA/" + s + "/QC/All_coverage_positions.txt" for s in config["DNA_Samples"]])
+        input_list.append(["Results/DNA/" + s + "/QC/HotSpot_Low_coverage_positions.txt" for s in config["DNA_Samples"]])
+        input_list.append(["Results/DNA/" + s + "/QC/HotSpot_Coverage_and_Mutations.txt" for s in config["DNA_Samples"]])
         #input_list.append(["Results/DNA/" + s + "/QC/Fold-80.txt" for s in config["DNA_Samples"]]) #MultiQC fixar denna!
         input_list.append(["qc/" + s + "/" + s + "_Stat_table.csv" for s in config["DNA_Samples"]])
         input_list.append(["qc/" + s + "/" + s + "-sort_fastqc.html" for s in config["DNA_Samples"]])

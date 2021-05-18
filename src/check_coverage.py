@@ -15,7 +15,7 @@ outfile2 = open(sys.argv[4], "w")
 
 outfile.write("#Chr\tStart_hg19\tEnd_hg19\tGene\tCDS_mut_syntax\tAA_mut_synta\tReport\tcomment\tExon\tAccession_number\tCoverage\tPosition\n")
 outfile2.write("#Chr\tStart_hg19\tEnd_hg19\tGene\tCDS_mut_syntax\tAA_mut_synta\tReport\tcomment\tExon\tAccession_number\tCoverage\tPosition")
-outfile2.write("\tDP\tRef_DP\tAlt_DP\tAF\n")
+outfile2.write("\tDP\tRef_DP\tAlt_DP\tAF\tAA_change\tCDS_change\n")
 
 
 '''Find positions to report and gene regions to analyse'''
@@ -119,8 +119,11 @@ for line in vcf_file:
             AF_index = i
         i += 1
     AF = INFO[AF_index][3:]
+    VEP = INFO[-1]
+    AA_change = VEP.split(":p.")[1].split("|")[0]
+    CDS_change = VEP.split(":c.")[1].split("|")[0]
     if key in inv_pos:
-        vcf_dict[key] = [DP, Ref_DP, Alt_DP, AF]
+        vcf_dict[key] = [DP, Ref_DP, Alt_DP, AF, AA_change, CDS_change]
 
 
 '''Report all interesting positions (All but region) with coverage < 50'''
