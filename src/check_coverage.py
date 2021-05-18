@@ -125,7 +125,11 @@ for line in vcf_file:
         AA_change = AA_change[1].split("|")[0]
     else :
         AA_change = ""
-    CDS_change = VEP.split(":c.")[1].split("|")[0]
+    CDS_change = VEP.split(":c.")
+    if len(CDS_change) == 2 :
+        CDS_change = CDS_change[1].split("|")[0]
+    else :
+        CDS_change = ""
     if key in inv_pos:
         vcf_dict[key] = [DP, Ref_DP, Alt_DP, AF, AA_change, CDS_change]
 
