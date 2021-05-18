@@ -15,7 +15,7 @@ outfile2 = open(sys.argv[4], "w")
 
 outfile.write("#Chr\tStart_hg19\tEnd_hg19\tGene\tCDS_mut_syntax\tAA_mut_synta\tReport\tcomment\tExon\tAccession_number\tCoverage\tPosition\n")
 outfile2.write("#Chr\tStart_hg19\tEnd_hg19\tGene\tCDS_mut_syntax\tAA_mut_synta\tReport\tcomment\tExon\tAccession_number\tCoverage\tPosition")
-outfile2.write("\tDP\tRef_DP\tAlt_DP\tAF\n"
+outfile2.write("\tDP\tRef_DP\tAlt_DP\tAF\n")
 
 
 '''Find positions to report and gene regions to analyse'''
