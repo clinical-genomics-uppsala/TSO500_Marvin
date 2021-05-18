@@ -8,7 +8,7 @@ path = "/data/ref_data/wp1/refFiles_20191010/refFiles/"
 infiles = ["Mutations_Colon_20171219.csv", "Mutations_Lung_20190211.csv", "Mutations_Melanom_20190211.csv", "Mutations_Gist_20190211.csv","Mutations_Ovarial_20170125_header_ok.csv"]
 
 bam_file = sys.argv[1]
-vcf_file = sys.argv[2]
+vcf_file = open(sys.argv[2])
 outfile = open(sys.argv[3], "w")
 outfile2 = open(sys.argv[4], "w")
 
@@ -76,7 +76,7 @@ gene_regions = gene_regions_temp
 '''find all calls in the vcf overlapping hotspots'''
 vcf_dict = {}
 header = True
-for line in vcf:
+for line in vcf_file:
     if header:
         if line[:6] == "#CHROM":
             header = False
