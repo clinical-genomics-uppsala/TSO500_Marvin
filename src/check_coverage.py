@@ -123,6 +123,8 @@ for line in vcf_file:
     AA_change = VEP.split(":p.")
     if len(AA_change) == 2 :
         AA_change = AA_change[1].split("|")[0]
+        if AA_change[-3:] == "%3D" :
+            AA_change = AA_change[:-3]
     else :
         AA_change = ""
     CDS_change = VEP.split(":c.")
