@@ -153,7 +153,7 @@ for region in gene_regions :
         key = chrom + "_" + pos
         if key in inv_pos :
             coverage = int(lline[2])
-            if coverage < 50 :
+            if coverage < 200 :
                 for info in inv_pos[key] :
                     outfile.write(info + "\t")
                 outfile.write(str(coverage) + "\t" + pos + "\n")
