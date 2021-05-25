@@ -31,7 +31,7 @@ for line in infile :
     else :
         gene_dict[gene2].append([i,4])
     i += 1
-    print(gene_list)
+    #print(gene_list)
 infile.close()
 
 header = True
