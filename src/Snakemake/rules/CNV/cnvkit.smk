@@ -62,6 +62,8 @@ rule Filter_cnv:
         cnv_done = "CNV_results/cnv_done.txt"
     #singularity:
     #    "/projects/wp4/nobackup/workspace/somatic_dev/singularity/cnvkit_0.9.7--py_1.sif"
+    container:
+        "docker://gmsuppsala/somatic:develop"
     shell:
         #"source /projects/wp4/nobackup/workspace/jonas_test/CNV_runs/20190909_JA_refernce/CNV/Helena/cnvkit_venv/bin/activate; "
         "python src/report_cnv.py "
