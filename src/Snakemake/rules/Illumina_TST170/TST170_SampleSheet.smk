@@ -41,4 +41,6 @@ rule SampleSheet_TST170:
                     SS.write(",PoolRNA\n")
         SS.close()
         infile.close()
+        subprocess.call("mv " + params.Runfolder + "SampleSheet.csv " + params.Runfolder + "SampleSheet.csv.original", shell=True)
+        subprocess.call("chmod 444 " + params.Runfolder + "SampleSheet.csv.original", shell=True)
         subprocess.call("cp " + output.Sample_sheet + " " + params.Runfolder, shell=True)
