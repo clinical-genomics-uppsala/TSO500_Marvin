@@ -4,8 +4,10 @@ localrules: copy_TST170
 rule copy_TST170:
     input:
         fusions = ["RNA_TST170/RNA_" + s + "/" + s + "_HighConfidenceVariants.csv" for s in config["RNA_Samples"]],
+        QC = "RNA_TST170/RNA_SampleMetricsReport.txt",
     output:
         fusions = ["Results/RNA/" + s + "/Fusions/" + s + "_HighConfidenceVariants.csv" for s in config["RNA_Samples"]],
+        QC = ["Results/RNA/" + s + "/QC/TST170_RNA_SampleMetricsReport.txt" for s in config["RNA_Samples"]],
     params:
         samples = config["RNA_Samples"]
     run:
