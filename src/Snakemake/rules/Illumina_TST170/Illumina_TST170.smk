@@ -12,7 +12,7 @@ rule run_TST170:
         import subprocess
         import os
         subprocess.call("mkdir TST170/", shell=True)
-        subprocess.call("singularity run -B /etc/localtime:/etc/localtime -B " + params.runfolder + ":/data -B /data/illumina/TST170/resources_TST170/genomes:/genomes -B ./TST170:/analysis /projects/wp4/nobackup/workspace/somatic_dev/singularity/docker-oncology.dockerhub.illumina.com_tst170localapp_1.0.0.0-2017-07-28-71e1b6fbab65.sif", shell=True)
+        subprocess.call("singularity run -e -B /etc/localtime:/etc/localtime -B " + params.runfolder + ":/data -B /data/illumina/TST170/resources_TST170/genomes:/genomes -B ./TST170:/analysis /projects/wp4/nobackup/workspace/somatic_dev/singularity/docker-oncology.dockerhub.illumina.com_tst170localapp_1.0.0.0-2017-07-28-71e1b6fbab65.sif", shell=True)
         TST170_outfolder = [i for i in os.listdir("TST170/") if "TruSightTumor170_Analysis_" in i][0]
         subprocess.call("mv TST170/" + TST170_outfolder + "/RNA_IntermediateFiles/Alignment/* RNA_TST170/bam_files/", shell=True)
         subprocess.call("rm RNA_TST170/bam_files/*.bed", shell=True)
