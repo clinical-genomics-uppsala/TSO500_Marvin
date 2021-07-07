@@ -21,8 +21,8 @@ outfile2.write("\tDP\tRef_DP\tAlt_DP\tAF\tAA_change\tCDS_change\n")
 '''Find positions to report and gene regions to analyse'''
 inv_pos = {}
 gene_regions = []
-for infile_name in infiles :
-    if infile_name = "TERT" :
+for infile_name in infiles:
+    if infile_name == "TERT":
         infile = open("DATA/TERT.csv")
     else :
         infile = open(path + infile_name)
