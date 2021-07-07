@@ -1,0 +1,3 @@
+#Chr	Start_hg19	End_hg19	Gene	CDS_mut_syntax	AA_mut_synta	Report	comment	Exon	Accession_number
+NC_000005.X	1295228	1295228	TERT	c.1-124	-	hotspot	promotor	-	NM_198253
+NC_000005.X	1295250	1295250	TERT	c.1-146	-	hotspot	promotor	-	NM_198253

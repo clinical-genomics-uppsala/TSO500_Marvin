@@ -5,7 +5,7 @@ import sys
 #path = "/gluster-storage-volume/data/ref_data/wp1/refFiles_20191010/refFiles/"
 path = "/data/ref_data/wp1/refFiles_20191010/refFiles/"
 #infiles = ["Mutations_Colon_20171219.csv", "Mutations_Lung_20190211.csv", "Mutations_Melanom_20190211.csv", "Mutations_Ovarial_20170125.csv", "Mutations_Gist_20190211.csv"]
-infiles = ["Mutations_Colon_20171219.csv", "Mutations_Lung_20190211.csv", "Mutations_Melanom_20190211.csv", "Mutations_Gist_20190211.csv","Mutations_Ovarial_20170125_header_ok.csv"]
+infiles = ["TERT", "Mutations_Colon_20171219.csv", "Mutations_Lung_20190211.csv", "Mutations_Melanom_20190211.csv", "Mutations_Gist_20190211.csv","Mutations_Ovarial_20170125_header_ok.csv"]
 
 bam_file = sys.argv[1]
 vcf_file = open(sys.argv[2])
@@ -22,8 +22,11 @@ outfile2.write("\tDP\tRef_DP\tAlt_DP\tAF\tAA_change\tCDS_change\n")
 inv_pos = {}
 gene_regions = []
 for infile_name in infiles :
-    infile = open(path + infile_name)
-    print(infile_name)
+    if infile_name = "TERT" :
+        infile = open("DATA/TERT.csv")
+    else :
+        infile = open(path + infile_name)
+    #print(infile_name)
     header = True
     prev_gene = ""
     prev_chrom = ""
@@ -136,7 +139,7 @@ for line in vcf_file:
         vcf_dict[key] = [DP, Ref_DP, Alt_DP, AF, AA_change, CDS_change]
 
 
-'''Report all interesting positions (All but region) with coverage < 50'''
+'''Report all interesting positions (All but region) with coverage < 200'''
 depth_dict = {}
 for region in gene_regions :
     print(region)
