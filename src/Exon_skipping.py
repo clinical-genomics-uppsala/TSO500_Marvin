@@ -49,7 +49,7 @@ for line in junction_file:
             i_end = exon[3]
     if i_end == 100 :
         for exon in gene_dict[pos_dict[key1]] :
-            if abs(exon[1] - end_pos) < 100 :
+            if abs(exon[1] - end_pos) < 200 :
                 i_end = exon[3]
     #if i_start != 100 and i_end != 100:
     if i_end - i_start > 1 or i_start == 100 or i_end == 100 :
