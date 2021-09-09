@@ -1,7 +1,7 @@
 
 rule Exon_skipping:
     input:
-        bed=config["bed"]["bedfile"],
+        bed=config["bed"]["MET"],
         junction="STAR/{sample}SJ.out.tab",
     output:
         results="Results/RNA/{sample}/Fusions/{sample}_Met_exon_skipping.txt",
