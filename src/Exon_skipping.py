@@ -18,7 +18,7 @@ for line in bed_file :
     gene = region.split("_")[0]
     if gene != "MET" :
         continue
-    if region.find("Exon") == -1 :
+    if region.find("exon") == -1 :
         continue
     exon = region.split("_")[-1]
     exon = int(exon)

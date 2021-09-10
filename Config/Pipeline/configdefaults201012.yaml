@@ -15,7 +15,7 @@ configfiles:
 bed:
     bedfile: "DATA/TST500C_manifest.bed"
     intervals: "DATA/TST500C_manifest.interval_list"
-    MET: "MET_exon_skipping.bed"
+    MET: "DATA/MET_Exon14_skipping.bed"
 
 singularity:
     execute: "singularity exec -e -B /data -B /projects -B /scratch "
