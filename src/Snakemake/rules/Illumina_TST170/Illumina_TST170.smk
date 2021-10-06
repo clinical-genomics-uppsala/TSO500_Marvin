@@ -19,6 +19,7 @@ rule run_TST170:
         subprocess.call("mv TST170/" + TST170_outfolder + "/*.* RNA_TST170/", shell=True)
         for sample in params.samples :
             subprocess.call("mv TST170/" + TST170_outfolder + "/RNA_" + sample + "/* RNA_TST170/RNA_" + sample + "/", shell=True)
+        subprocess.call("cp *_samplesheet.csv " + params.runfolder + "SampleSheet.txt", shell=True)
 
 rule TST170_QC_coverage:
     input:
