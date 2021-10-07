@@ -26,7 +26,7 @@ rule TST170_QC_coverage:
         bam = "RNA_TST170/bam_files/{sample}.bam",
         bed = "DATA/TST500C_manifest.bed"
     output:
-        coverage = "Results/RNA/{sample}/Housekeeping_gene_coverage.txt"
+        coverage = "Results/RNA/{sample}/{sample}.Housekeeping_gene_coverage.txt"
     run:
         import subprocess
         subprocess.call("python src/RNA_coverage.py " + input.bam + " " + input.bed + " " + output.coverage, shell=True)
