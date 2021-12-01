@@ -196,7 +196,7 @@ for line in cnv_event :
                 vcf_file_name = cnv_file_name[:-3] + "vcf"
                 vcf_file = open(cnv_file_name, "a")
                 svlen = end_pos - start_pos
-                log_odds_ratio = round(Copy_ratio,2))
+                log_odds_ratio = round(Copy_ratio,2)
                 cn = vcf_cn
                 ref = "N"
                 alt = "<CNV>"
