@@ -111,6 +111,7 @@ for cnv_file_name in cnv_files :
         chrom = lline[0]
         if chrom == "chrX" :
             continue
+        print(lline)
         cnv_regions = lline[3].split(",")
         #Filter flanking and intron only
         Flanking_intron_only = True
