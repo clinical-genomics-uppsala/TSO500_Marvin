@@ -98,7 +98,7 @@ for cnv_file_name in cnv_files :
     '''Write vcf headers'''
     vcf_file_name = cnv_file_name[:-3] + "vcf"
     vcf_file = open(vcf_file_name, "w")
-    sample_name = lline[0].split("/")[1].split("-ready")[0]
+    sample_name = cnv_file_name[0].split("/")[1].split("-ready")[0]
     write_vcf_header(sample_name, vcf_file)
     vcf_file.close()
     '''Collect all CNV events'''
@@ -111,7 +111,6 @@ for cnv_file_name in cnv_files :
         chrom = lline[0]
         if chrom == "chrX" :
             continue
-        print(lline)
         cnv_regions = lline[3].split(",")
         #Filter flanking and intron only
         Flanking_intron_only = True
