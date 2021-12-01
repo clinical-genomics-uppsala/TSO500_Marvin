@@ -209,8 +209,8 @@ for line in cnv_event :
                 format = "CN:CNQ:DP"
                 data = "%s:%s:%s" % (cn, nr_probes, dp)
                 out_line = "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (chrom, start_pos, id, ref, alt, qual, filter, info, format, data)
-                vcf_out.write(out_line)
-                vcf_out.close()
+                vcf_file.write(out_line)
+                vcf_file.close()
 cnv_relevant.close()
 
 
