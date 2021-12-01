@@ -66,7 +66,7 @@ rule Filter_cnv:
         "docker://gmsuppsala/somatic:develop"
     shell:
         #"source /projects/wp4/nobackup/workspace/jonas_test/CNV_runs/20190909_JA_refernce/CNV/Helena/cnvkit_venv/bin/activate; "
-        "python src/report_cnv.py "
+        "python src/report_cnv_to_vcf.py "
         "TSO500 "
         "{input.purity} "
         "{input.relevant_genes} "
