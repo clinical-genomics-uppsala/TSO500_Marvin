@@ -193,7 +193,7 @@ for line in cnv_event :
         if analysis_type == "TSO500" :
             if (vcf_cn > 6.0 and OG_CN_purity > 6.0) or (vcf_cn <= 1.5 and OG_CN_purity <= 1.5 and (gene == "CDKN2A" or gene == "PTEN")):
                 cnv_relevant.write(long_sample + "\t" + sample2 + "\t" + gene + "\t" + chrom + "\t" + str(start_pos) + "-" + str(end_pos) + "\t" + str(round(Copy_ratio,2)) + "\t" + str(cn_100) + "\t" + str(OG_CN) + "\t" + str(vcf_purity) + "\t" + str(vcf_cn) + "\t" + str(OG_CN_purity) + "\n")
-                vcf_file_name = cnv_file_name[:-3] + "vcf"
+                vcf_file_name = long_sample[:-3] + "vcf"
                 vcf_file = open(vcf_file_name, "a")
                 svlen = end_pos - start_pos
                 log_odds_ratio = round(Copy_ratio,2)
