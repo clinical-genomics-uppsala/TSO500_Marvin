@@ -98,7 +98,7 @@ for cnv_file_name in cnv_files :
     '''Write vcf headers'''
     vcf_file_name = cnv_file_name[:-3] + "vcf"
     vcf_file = open(vcf_file_name, "w")
-    sample_name = cnv_file_name[0].split("/")[1].split("-ready")[0]
+    sample_name = cnv_file_name.split("/")[1].split("-ready")[0]
     write_vcf_header(sample_name, vcf_file)
     vcf_file.close()
     '''Collect all CNV events'''
