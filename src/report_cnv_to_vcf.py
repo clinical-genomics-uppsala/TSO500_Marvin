@@ -97,7 +97,7 @@ for cnv_file_name in cnv_files :
     cnv_file = open(cnv_file_name)
     '''Write vcf headers'''
     vcf_file_name = cnv_file_name[:-3] + "vcf"
-    vcf_file = open(cnv_file_name, "w")
+    vcf_file = open(vcf_file_name, "w")
     sample_name = lline[0].split("/")[1].split("-ready")[0]
     write_vcf_header(sample_name, vcf_file)
     vcf_file.close()
@@ -194,7 +194,7 @@ for line in cnv_event :
             if (vcf_cn > 6.0 and OG_CN_purity > 6.0) or (vcf_cn <= 1.5 and OG_CN_purity <= 1.5 and (gene == "CDKN2A" or gene == "PTEN")):
                 cnv_relevant.write(long_sample + "\t" + sample2 + "\t" + gene + "\t" + chrom + "\t" + str(start_pos) + "-" + str(end_pos) + "\t" + str(round(Copy_ratio,2)) + "\t" + str(cn_100) + "\t" + str(OG_CN) + "\t" + str(vcf_purity) + "\t" + str(vcf_cn) + "\t" + str(OG_CN_purity) + "\n")
                 vcf_file_name = cnv_file_name[:-3] + "vcf"
-                vcf_file = open(cnv_file_name, "a")
+                vcf_file = open(vcf_file_name, "a")
                 svlen = end_pos - start_pos
                 log_odds_ratio = round(Copy_ratio,2)
                 cn = vcf_cn
