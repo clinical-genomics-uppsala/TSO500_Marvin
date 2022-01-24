@@ -4,6 +4,8 @@ rule ensemble_filter:
         vcf = "recall/{sample}.ensemble.vcf.gz"
     output:
         vcf = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.vcf.gz"
+    container:
+        config["singularity"]["bcftools"]
     shell:
         "python3 src/filter_by_num_callers.py -v {input.vcf} -d | bgzip > {output.vcf} && "
         "tabix {output.vcf}"
@@ -15,6 +17,8 @@ rule intron_filter:
         vcf = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.vcf.gz"
     params:
         vcf = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.vcf"
+    container:
+        config["singularity"]["bcftools"]
     shell :
         "python3 src/filter_TSO500_introns.py {input.vcf} &&"
         "bgzip {params.vcf} && "
@@ -84,6 +88,8 @@ rule ffpe_filter:
     output:
         #gvcf = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.vcf.gz",
         gvcf_ffpe = "Results/DNA/{sample}/vcf/{sample}-ensemble.final.no.introns.AD20.ffpe.tsv.gz"
+    container:
+        config["singularity"]["bcftools"]
     shell:
         #"module load oracle-jdk-1.8/1.8.0_162 && "
         "java -jar SOBDetector/SOBDetector_v1.0.1.jar --input-type VCF --input-variants {input.vcf} --input-bam {input.bam} --output-variants {params.vcf_ffpe_temp} && "
