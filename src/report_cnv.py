@@ -268,6 +268,7 @@ for line in cnv_relevant :
                     gene_string += ","
                     gene_string += exon
                     #gene_string += gene_name
+            break
     bed.close()
     #command_line = "/projects/wp4/nobackup/workspace/jonas_test/CNV_runs/20190909_JA_refernce/CNV/Helena/cnvkit-0.9.5/cnvkit.py scatter "
     #command_line = "singularity exec /projects/wp4/nobackup/workspace/somatic_dev/singularity/cnvkit_0.9.7--py_1.sif cnvkit.py scatter "
