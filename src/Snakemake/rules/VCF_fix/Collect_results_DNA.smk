@@ -32,7 +32,7 @@ rule AD_filter:
     container:
         config["singularity"]["bcftools"]
     shell :
-        "bcftools filter -O v -o {output.vcf} -e \"FORMAT/AD[0:0]<20\" {input.vcf}"
+        "bcftools filter -O v -o {output.vcf} -e \"FORMAT/AD[0:1]<20\" {input.vcf}"
 
 
 rule vep:
