@@ -36,7 +36,7 @@ rule sort_recall:
         config["singularity"]["bcftools"]
     shell:
         #"(gunzip {input} && bgzip {params.vcf} &&
-        "(tabix {input} && bcftools sort -o {output.vcf} -O z {input} && tabix {output.vcf} ) &> {log}"
+        "(tabix -f {input} && bcftools sort -o {output.vcf} -O z {input} && tabix {output.vcf} ) &> {log}"
 
 rule filter_recall:
     input:
